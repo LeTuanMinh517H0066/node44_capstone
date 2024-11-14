@@ -1,0 +1,90 @@
+#register
+curl --location 'http://localhost:8085/auth/register' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxMzM4ODA1LCJleHAiOjE3MzE5NDM2MDV9.LenJ_VY4_9_QRkx2hReCMVHHIAnBtRNNg9HXwmzZnkQ' \
+--data-raw '{
+    "email": "2018minh@gmail.com",
+    "name": "Le Tuan Minh",
+    "password": "123456",
+    "age": 12
+
+}'
+#login
+curl --location 'http://localhost:8085/auth/login' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68' \
+--data-raw '{
+    "email": "2018minh@gmail.com",
+    "password": "123456"
+}'
+
+#get image
+
+curl --location 'http://localhost:8085/images/get-images?keyword=Sunset' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68'
+
+#get image detail
+
+curl --location 'http://localhost:8085/images/detail/5' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68'
+
+# image comment
+
+curl --location 'http://localhost:8085/images/get-comments/5' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68'
+
+#image check save
+
+curl --location --request GET 'http://localhost:8085/images/check-saved' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJJZCI6MjF9LCJpYXQiOjE3MzEwODExNjQsImV4cCI6MTczMTE2NzU2NH0.jXOhAz1D3xDcNtzMarHEnSkgozLcV1DjVlhQVAyiZMY' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68' \
+--data '{
+    "image_id": "3",
+    "user_id": "2"
+}'
+
+# image save comment
+curl --location 'http://localhost:8085/images/save-comment' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJJZCI6MjF9LCJpYXQiOjE3MzEwODExNjQsImV4cCI6MTczMTE2NzU2NH0.jXOhAz1D3xDcNtzMarHEnSkgozLcV1DjVlhQVAyiZMY' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68' \
+--data '{
+    "image_id": 5,
+    "comment": "haha"
+}'
+
+#image create
+curl --location 'http://localhost:8085/images/upload-image' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJJZCI6MjF9LCJpYXQiOjE3MzEzMzg4MDUsImV4cCI6MTczMTQyNTIwNX0.pJdEkwKhmUkvAqdIU-xTxXvB57ryH0v-bHxRtJ0ak7A' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68' \
+--form 'hinhAnh=@"/Users/mac/Downloads/csxd0sbqu55a1.png"' \
+--form 'name="hinh 2"' \
+--form 'description="content hinh 2"'
+
+#profile
+curl --location --request GET 'http://localhost:8085/users/get-profile' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJJZCI6MjF9LCJpYXQiOjE3MzEwODExNjQsImV4cCI6MTczMTE2NzU2NH0.jXOhAz1D3xDcNtzMarHEnSkgozLcV1DjVlhQVAyiZMY' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68' \
+--data '{
+    "user_id": "4"
+}'
+
+#get save image
+curl --location 'http://localhost:8085/users/get-saved-image/3' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJJZCI6MjF9LCJpYXQiOjE3MzEwODExNjQsImV4cCI6MTczMTE2NzU2NH0.jXOhAz1D3xDcNtzMarHEnSkgozLcV1DjVlhQVAyiZMY' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68'
+
+#user image
+curl --location 'http://localhost:8085/users/get-image/3' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJJZCI6MjF9LCJpYXQiOjE3MzEwODExNjQsImV4cCI6MTczMTE2NzU2NH0.jXOhAz1D3xDcNtzMarHEnSkgozLcV1DjVlhQVAyiZMY' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68'
+
+#user update profile
+curl --location 'http://localhost:8085/users/update-profile' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJJZCI6MjF9LCJpYXQiOjE3MzEzMzg4MDUsImV4cCI6MTczMTQyNTIwNX0.pJdEkwKhmUkvAqdIU-xTxXvB57ryH0v-bHxRtJ0ak7A' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7fSwiaWF0IjoxNzMxNTUwNDU3LCJleHAiOjE3MzIxNTUyNTd9.ke5Mo_bZzA0rttY4dnmwIQrgbWMzYm5HCkolkAw6e68' \
+--form 'avatar=@"/Users/mac/Downloads/csxd0sbqu55a1.png"' \
+--form 'name="Le Tuan Minh"' \
+--form 'email="2018minh@gmail.com"'
